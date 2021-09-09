@@ -141,10 +141,14 @@ function filterByGenre(movies, genre) {
     throw `error message`
   }
 
-  let movieByGenre = movies.filter((movie) => { return movie.genre.includes(genre) }); return movieByGenre
+  let movieByGenre = movies.filter((movie, genre) => { 
+  //lowercasing the genre in the movie within movies before using includes on it.  
+  let caseInsensativeGenre = movie.genre.toLowerCase() 
+    
+  return caseInsensativeGenre.includes(genre.toLowerCase())}); 
 
 
-
+  return movieByGenre
 
 }
 
