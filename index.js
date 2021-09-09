@@ -59,7 +59,7 @@ function getAllMovieTitles(movies) {
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating(movies, rating) {
+function checkIfAnyMovieHasRating(movies, rating) { //remember to add that second parameter!!
   //if no rating = rating should equal G
   if (!rating) {
     rating = 'G'
@@ -77,6 +77,7 @@ function checkIfAnyMovieHasRating(movies, rating) {
   return doesMovieHaveRating
 }
 
+//REMEMBER TO FULLY READ THE PROBLEM!!!
 
 /**
  * findById()
@@ -95,8 +96,21 @@ function checkIfAnyMovieHasRating(movies, rating) {
     };
  */
 function findById(movies, id) {
-  let movieById = movies.find(movie => movie.imdbID === id)
+
+  if (movies.length === 0) {
+    throw `error message`
+  }
+
+
+  let movieById = movies.find((movie) => {if (movie.imdbID === id) {return movie} })
+
+
+  if (movieById === undefined) {
+    return null
+  }
   return movieById
+
+  
 }
 
 /**
@@ -122,8 +136,13 @@ function findById(movies, id) {
  *  //> []
  */
 function filterByGenre(movies, genre) {
-  let movieByGenre = movies.filter((el) => { return el.genre.includes(genre) }); return movieByGenre
+  let movieByGenre = movies.filter((movie) => { return movie.genre.includes(genre) }); return movieByGenre
+
+
+
+
 }
+
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
