@@ -31,6 +31,12 @@ const exampleMovies = require("./movies");
     ];
  */
 function getAllMovieTitles(movies) {
+//create guard clause to throw error
+if(movies.length === 0) {
+  throw `error message`
+}
+
+
   let movieTitles = movies.map((movie) => {return movie.title}); return movieTitles
 }
 
