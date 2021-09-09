@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -31,13 +32,13 @@ const exampleMovies = require("./movies");
     ];
  */
 function getAllMovieTitles(movies) {
-//create guard clause to throw error
-if(movies.length === 0) {
-  throw `error message`
-}
+  //create guard clause to throw error
+  if (movies.length === 0) {
+    throw `error message`
+  }
 
 
-  let movieTitles = movies.map((movie) => {return movie.title}); return movieTitles
+  let movieTitles = movies.map((movie) => { return movie.title }); return movieTitles
 }
 
 /**
@@ -58,10 +59,24 @@ if(movies.length === 0) {
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating(movies) {
-  let doesMovieHaveARating = movies.some(movie => movie.includes(imdbRating))
-  return doesMovieHaveARating
+function checkIfAnyMovieHasRating(movies, rating) {
+  //if no rating = rating should equal G
+  if (!rating) {
+    rating = 'G'
+  }
+  //If array is empty - create the error message
+  if (movies.length === 0) {
+    throw `error message`
+  }
+
+  const doesMovieHaveRating = movies.some((movie) => {
+    if (movie.rated === rating) {
+      return true
+    }
+  })
+  return doesMovieHaveRating
 }
+
 
 /**
  * findById()
@@ -107,7 +122,7 @@ function findById(movies, id) {
  *  //> []
  */
 function filterByGenre(movies, genre) {
-let movieByGenre = movies.filter((el) => {return el.genre.includes(genre)}); return movieByGenre
+  let movieByGenre = movies.filter((el) => { return el.genre.includes(genre) }); return movieByGenre
 }
 
 /**
@@ -134,7 +149,7 @@ let movieByGenre = movies.filter((el) => {return el.genre.includes(genre)}); ret
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) { }
 
 /**
  * getRottenTomatoesScoreByMovie()
@@ -165,8 +180,8 @@ function getRottenTomatoesScoreByMovie(movies) {
     let tomatoScOb = {};
     tomatoScOb[movie.ratings[i].source.includes("Rotten Tomatoes")] = movie.ratings[i].value
     return tomatoScOb
-   })
-   return tomatoScores
+  })
+  return tomatoScores
 }
 
 // Do not change anything below this line.
