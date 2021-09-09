@@ -141,7 +141,7 @@ function filterByGenre(movies, genre) {
     throw `error message`
   }
 
-  let movieByGenre = movies.filter((movie, genre) => { 
+  let movieByGenre = movies.filter(movie => { 
   //lowercasing the genre in the movie within movies before using includes on it.  
   let caseInsensativeGenre = movie.genre.toLowerCase() 
     
@@ -177,7 +177,14 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear(movies, year) { }
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+
+  if (movies.length === 0) {
+    throw `error message`
+  }
+  //number to turn string into integers
+  let movieReleasedPrior = movie.filter(movie => Number(movie.released <= year))
+ }
 
 /**
  * getRottenTomatoesScoreByMovie()
