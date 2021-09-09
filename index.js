@@ -30,7 +30,9 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  let movieTitles = movies.map((movie) => {return movie.title}); return movieTitles
+}
 
 /**
  * checkIfAnyMovieHasRating()
@@ -50,7 +52,10 @@ function getAllMovieTitles() {}
  *  checkIfAnyMovieHasRating(movies, "R");
  *  //> false
  */
-function checkIfAnyMovieHasRating() {}
+function checkIfAnyMovieHasRating(movies) {
+  let doesMovieHaveARating = movies.some(movie => movie.includes(imdbRating))
+  return doesMovieHaveARating
+}
 
 /**
  * findById()
@@ -68,7 +73,10 @@ function checkIfAnyMovieHasRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  let movieById = movies.find(movie => movie.imdbID === id)
+  return movieById
+}
 
 /**
  * filterByGenre()
@@ -92,7 +100,9 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+let movieByGenre = movies.filter((el) => {return el.genre.includes(genre)}); return movieByGenre
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -118,7 +128,7 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
 
 /**
  * getRottenTomatoesScoreByMovie()
@@ -144,7 +154,14 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
       { "James and the Giant Peach": "91%" },
     ];
  */
-function getRottenTomatoesScoreByMovie() {}
+function getRottenTomatoesScoreByMovie(movies) {
+  let tomatoScores = movies.map(movie => {
+    let tomatoScOb = {};
+    tomatoScOb[movie.ratings[i].source.includes("Rotten Tomatoes")] = movie.ratings[i].value
+    return tomatoScOb
+   })
+   return tomatoScores
+}
 
 // Do not change anything below this line.
 module.exports = {
