@@ -110,7 +110,7 @@ function findById(movies, id) {
   }
   return movieById
 
-  
+
 }
 
 /**
@@ -136,6 +136,11 @@ function findById(movies, id) {
  *  //> []
  */
 function filterByGenre(movies, genre) {
+
+  if (movies.length === 0) {
+    throw `error message`
+  }
+
   let movieByGenre = movies.filter((movie) => { return movie.genre.includes(genre) }); return movieByGenre
 
 
